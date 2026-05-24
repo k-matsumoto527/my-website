@@ -80,6 +80,31 @@
       margin-bottom: 20px;
     }
 
+    .shop-info {
+      width: 100%;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .shop-info-row {
+      display: flex;
+      gap: 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      line-height: 1.5;
+    }
+
+    .shop-info-row:last-child {
+      border-bottom: none;
+    }
+
+    .shop-info-label {
+      min-width: 5em;
+      opacity: 0.6;
+    }
+
     .divider {
       width: 40px;
       height: 2px;
@@ -180,6 +205,13 @@
         </svg>
         Instagram
       </a>
+    </div>
+    <div class="divider"></div>
+    <div class="shop-info">
+      <div class="shop-info-row"><span class="shop-info-label">住所</span><span>岐阜県XXX</span></div>
+      <div class="shop-info-row"><span class="shop-info-label">電話</span><span>XXX-XXXXX</span></div>
+      <div class="shop-info-row"><span class="shop-info-label">営業時間</span><span>17:00〜21:00（L.O. 20:30）</span></div>
+      <div class="shop-info-row"><span class="shop-info-label">定休日</span><span>月曜日</span></div>
     </div>
   </div>
 <script>
