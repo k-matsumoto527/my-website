@@ -142,6 +142,33 @@
       color: #ffffff;
       font-size: 0.8rem;
     }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+    }
+
+    .menu-card-img[src] {
+      cursor: zoom-in;
+    }
   </style>
 </head>
 <body>
@@ -235,8 +262,32 @@
 
     <footer>© Dining TASHIRO</footer>
   </div>
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
+    var lightbox = document.getElementById("lightbox");
+    var lightboxImg = document.getElementById("lightbox-img");
+
+    document.querySelectorAll("img.menu-card-img").forEach(function(img) {
+      img.addEventListener("click", function(e) {
+        e.stopPropagation();
+        lightboxImg.src = this.src;
+        lightboxImg.alt = this.alt;
+        lightbox.classList.add("active");
+      });
+    });
+
+    lightbox.addEventListener("click", function() {
+      lightbox.classList.remove("active");
+    });
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") lightbox.classList.remove("active");
+    });
+  });
     document.querySelectorAll("a[href]").forEach(function(link) {
       var href = link.getAttribute("href");
       if (href && !href.startsWith("http") && !href.startsWith("#")) {
