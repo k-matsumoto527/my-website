@@ -287,7 +287,7 @@
     document.addEventListener("keydown", function(e) {
       if (e.key === "Escape") lightbox.classList.remove("active");
     });
-  });
+
     document.querySelectorAll("a[href]").forEach(function(link) {
       var href = link.getAttribute("href");
       if (href && !href.startsWith("http") && !href.startsWith("#")) {
