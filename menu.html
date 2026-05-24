@@ -166,6 +166,29 @@
       box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
     }
 
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
     .menu-card-img[src] {
       cursor: zoom-in;
     }
@@ -263,6 +286,7 @@
     <footer>© Dining TASHIRO</footer>
   </div>
   <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
     <img id="lightbox-img" src="" alt="">
   </div>
 
@@ -281,6 +305,11 @@
     });
 
     lightbox.addEventListener("click", function() {
+      lightbox.classList.remove("active");
+    });
+
+    document.getElementById("lightbox-close").addEventListener("click", function(e) {
+      e.stopPropagation();
       lightbox.classList.remove("active");
     });
 
