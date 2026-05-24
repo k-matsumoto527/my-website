@@ -2,9 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  &
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>GitのブランチとPull Requestの使い方 — Dining TASHIRO</title>
+  <title>常連のSさんが教えてくれたこと — Dining TASHIRO</title>
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -27,12 +26,12 @@
     .container {
       max-width: 680px;
       margin: 0 auto;
-      animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-      transform: translateY(60px);
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
     }
 
-    @keyframes slideInUp {
-      to { transform: translateY(0); }
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
     .back-link {
@@ -98,34 +97,6 @@
       margin-bottom: 16px;
     }
 
-    .content code {
-      background: #1a1d27;
-      border: 1px solid #2d3148;
-      border-radius: 6px;
-      padding: 2px 7px;
-      font-family: 'Fira Code', 'Cascadia Code', monospace;
-      font-size: 0.88em;
-      color: #ffffff;
-    }
-
-    .content pre {
-      background: #1a1d27;
-      border: 1px solid #2d3148;
-      border-radius: 12px;
-      padding: 20px 24px;
-      overflow-x: auto;
-      margin: 20px 0;
-    }
-
-    .content pre code {
-      background: none;
-      border: none;
-      padding: 0;
-      font-size: 0.9rem;
-      color: #ffffff;
-      line-height: 1.7;
-    }
-
     @media (max-width: 480px) {
       h1 { font-size: 1.5rem; }
     }
@@ -137,42 +108,42 @@
 
     <div class="post-meta">
       <span class="post-date">2026-05-10</span>
-      <span class="post-tag">Git</span>
+      <span class="post-tag">常連</span>
     </div>
 
-    <h1>GitのブランチとPull Requestの使い方</h1>
+    <h1>常連のSさんが教えてくれたこと</h1>
     <div class="divider"></div>
 
     <div class="content">
-      <p>チーム開発で必須のGitブランチ運用。<code>main</code> ブランチを守りながら機能を追加するための基本的なフローをまとめました。</p>
+      <p>久しぶりにSさんが来てくださった。開店当初からのお客様で、もう10年以上のお付き合いになる。いつも決まってカウンターの一番端の席に座り、まず赤ワインを一杯。</p>
 
-      <h2>ブランチを切る理由</h2>
-      <p>ブランチを使うと、本番コード（main）に影響を与えずに新機能の開発やバグ修正を進められます。作業が終わったらPull Request（PR）を出してレビューを受け、問題なければmainにマージします。</p>
+      <h2>「ここが一番落ち着く」</h2>
+      <p>近況を話してくださりながら、ふとこんな言葉をいただいた。「最近いろんなお店に行くけど、やっぱりここのカウンターが一番落ち着くんだよね」。</p>
+      <p>料理の話でも、内装の話でもなかった。「カウンター」という言葉に、この店で過ごしてきた時間すべてが込められているような気がした。</p>
 
-      <h2>基本的なフロー</h2>
-      <pre><code># 最新のmainを取得
-git checkout main
-git pull origin main
+      <h2>お店は料理だけじゃない</h2>
+      <p>改めて思う。飲食店は料理を出す場所だけれど、人が集まり、時間が流れる場所でもある。Sさんがこの10年で感じてくださったことを、次の10年も積み重ねていきたい。</p>
 
-# 作業用ブランチを作成・切り替え
-git checkout -b feature/add-login
-
-# 変更をコミット
-git add .
-git commit -m "ログイン機能を追加"
-
-# リモートにプッシュ
-git push origin feature/add-login</code></pre>
-
-      <h2>Pull Requestを出す</h2>
-      <p>プッシュ後にGitHubを開くと「Compare &amp; pull request」ボタンが表示されます。変更内容と背景を書いてPRを作成し、チームメンバーにレビューを依頼しましょう。</p>
-
-      <h2>マージ後のブランチ削除</h2>
-      <p>マージが完了したらブランチは不要になります。GitHub上の「Delete branch」ボタンで削除し、ローカルでも以下のコマンドでクリーンアップしましょう。</p>
-      <pre><code>git checkout main
-git pull origin main
-git branch -d feature/add-login</code></pre>
+      <p>その夜は閉店後、一人でカウンター越しに店内を眺めた。いつもより少し、この場所が愛おしく感じられた。</p>
     </div>
   </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("a[href]").forEach(function(link) {
+      var href = link.getAttribute("href");
+      if (href && !href.startsWith("http") && !href.startsWith("#")) {
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          var target = this.getAttribute("href");
+          document.querySelectorAll(".container, .card, .dining-title, .subtitle").forEach(function(el) {
+            el.style.transition = "opacity 0.3s ease";
+            el.style.opacity = "0";
+          });
+          setTimeout(function() { window.location.href = target; }, 300);
+        });
+      }
+    });
+  });
+</script>
 </body>
 </html>

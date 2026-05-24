@@ -2,9 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  &
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>REST APIとは何か？初心者向け解説 — Dining TASHIRO</title>
+  <title>新メニュー開発、試作20回目の答え — Dining TASHIRO</title>
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -27,12 +26,12 @@
     .container {
       max-width: 680px;
       margin: 0 auto;
-      animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-      transform: translateY(60px);
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
     }
 
-    @keyframes slideInUp {
-      to { transform: translateY(0); }
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
     .back-link {
@@ -98,63 +97,8 @@
       margin-bottom: 16px;
     }
 
-    .content code {
-      background: #1a1d27;
-      border: 1px solid #2d3148;
-      border-radius: 6px;
-      padding: 2px 7px;
-      font-family: 'Fira Code', 'Cascadia Code', monospace;
-      font-size: 0.88em;
-      color: #ffffff;
-    }
-
-    .method-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 0.9rem;
-    }
-
-    .method-table th {
-      text-align: left;
-      padding: 10px 14px;
-      background: #1a1d27;
-      border: 1px solid #2d3148;
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    .method-table td {
-      padding: 10px 14px;
-      border: 1px solid #2d3148;
-      color: #ffffff;
-    }
-
-    .method-table tr:nth-child(even) td {
-      background: #161925;
-    }
-
-    .content pre {
-      background: #1a1d27;
-      border: 1px solid #2d3148;
-      border-radius: 12px;
-      padding: 20px 24px;
-      overflow-x: auto;
-      margin: 20px 0;
-    }
-
-    .content pre code {
-      background: none;
-      border: none;
-      padding: 0;
-      font-size: 0.9rem;
-      color: #ffffff;
-      line-height: 1.7;
-    }
-
     @media (max-width: 480px) {
       h1 { font-size: 1.5rem; }
-      .method-table { font-size: 0.82rem; }
     }
   </style>
 </head>
@@ -164,62 +108,42 @@
 
     <div class="post-meta">
       <span class="post-date">2026-04-28</span>
-      <span class="post-tag">Web</span>
+      <span class="post-tag">新メニュー</span>
     </div>
 
-    <h1>REST APIとは何か？初心者向け解説</h1>
+    <h1>新メニュー開発、試作20回目の答え</h1>
     <div class="divider"></div>
 
     <div class="content">
-      <p>システム間のデータのやり取りに使われるREST API。HTTPメソッドの意味から、実際のリクエスト・レスポンスの形まで解説します。</p>
+      <p>春のメニュー改定に向けて、3月から試作を続けていた。テーマは「肉料理のメインを一品加えること」。お酒に合わせて食べてほしい、そんな一皿を目指した。</p>
 
-      <h2>REST APIの概要</h2>
-      <p>REST（Representational State Transfer）は、Web APIを設計するためのアーキテクチャスタイルです。URLでリソースを表し、HTTPメソッドで操作の種類を表現するのが基本です。</p>
+      <h2>低温調理との格闘</h2>
+      <p>国産牛を使った低温調理のローストに決めたのは早かった。問題はソースだった。赤ワインソース、バルサミコ、グレービー。試作のたびに方向性が変わり、気づけば20回を超えていた。</p>
+      <p>決め手は、ソースを煮詰める時間だった。じっくり時間をかけて煮詰めた赤ワインソースが、肉の旨みと絡んだとき、「これだ」と思った。</p>
 
-      <h2>HTTPメソッドの使い分け</h2>
-      <table class="method-table">
-        <thead>
-          <tr>
-            <th>メソッド</th>
-            <th>操作</th>
-            <th>例</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>GET</code></td>
-            <td>データを取得</td>
-            <td>記事一覧を取得</td>
-          </tr>
-          <tr>
-            <td><code>POST</code></td>
-            <td>データを作成</td>
-            <td>新規記事を投稿</td>
-          </tr>
-          <tr>
-            <td><code>PUT</code></td>
-            <td>データを更新</td>
-            <td>記事を上書き更新</td>
-          </tr>
-          <tr>
-            <td><code>DELETE</code></td>
-            <td>データを削除</td>
-            <td>記事を削除</td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>料理は引き算だと改めて思う</h2>
+      <p>最終的なレシピはシンプルだ。でも、そのシンプルさにたどり着くまでに費やした時間が、料理の深みになると信じている。</p>
 
-      <h2>リクエストとレスポンスの例</h2>
-      <p><code>GET /posts/1</code> というリクエストを送ると、サーバーはJSON形式でデータを返します。</p>
-      <pre><code>{
-  "id": 1,
-  "title": "はじめてのDockerコンテナ入門",
-  "date": "2026-05-20",
-  "tag": "インフラ"
-}</code></pre>
-
-      <p>新規作成は <code>POST /posts</code> にリクエストボディを付けて送ります。レスポンスには作成されたリソースが返ってきます。REST APIをマスターすると、フロントエンドとバックエンドの連携がぐっとスムーズになります。</p>
+      <p>5月から正式にメニューに加わった牛肉のロースト。お客様の反応が楽しみで、毎晩オーダーが入るたびに緊張しながら焼いている。</p>
     </div>
   </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("a[href]").forEach(function(link) {
+      var href = link.getAttribute("href");
+      if (href && !href.startsWith("http") && !href.startsWith("#")) {
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          var target = this.getAttribute("href");
+          document.querySelectorAll(".container, .card, .dining-title, .subtitle").forEach(function(el) {
+            el.style.transition = "opacity 0.3s ease";
+            el.style.opacity = "0";
+          });
+          setTimeout(function() { window.location.href = target; }, 300);
+        });
+      }
+    });
+  });
+</script>
 </body>
 </html>

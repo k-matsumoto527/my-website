@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  &
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>Blog — Dining TASHIRO</title>
   <style>
@@ -27,12 +26,12 @@
     .container {
       max-width: 640px;
       margin: 0 auto;
-      animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-      transform: translateY(60px);
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
     }
 
-    @keyframes slideInUp {
-      to { transform: translateY(0); }
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
     header {
@@ -139,43 +138,61 @@
   <div class="container">
     <header>
       <a class="back-link" href="index.html">
-        ← プロフィールに戻る
+        ← トップに戻る
       </a>
       <div class="page-title">Blog</div>
-      <div class="page-subtitle">日々の学びや技術メモを書いています</div>
+      <div class="page-subtitle">お店の日々をつづっています</div>
     </header>
 
     <div class="post-list">
       <a class="post-card" href="post-1.html">
         <div class="post-meta">
           <span class="post-date">2026-05-20</span>
-          <span class="post-tag">インフラ</span>
+          <span class="post-tag">仕入れ</span>
         </div>
-        <div class="post-title">はじめてのDockerコンテナ入門</div>
-        <div class="post-excerpt">Dockerを使うと、アプリの実行環境をコンテナとして丸ごとパッケージできます。「自分のPCでは動くのに本番では動かない」という問題を根本から解決してくれる技術です。</div>
+        <div class="post-title">朝市で出会った、今季最高の鮮魚</div>
+        <div class="post-excerpt">早朝4時に市場へ。並んだ魚の中でひときわ目を引いたのは、脂ののった天然の真鯛でした。仕入れ先との関係が実を結んだ瞬間です。</div>
         <div class="post-arrow">続きを読む →</div>
       </a>
 
       <a class="post-card" href="post-2.html">
         <div class="post-meta">
           <span class="post-date">2026-05-10</span>
-          <span class="post-tag">Git</span>
+          <span class="post-tag">常連</span>
         </div>
-        <div class="post-title">GitのブランチとPull Requestの使い方</div>
-        <div class="post-excerpt">チーム開発で必須のGitブランチ運用。mainブランチを守りながら機能を追加するための基本的なフローをまとめました。Pull Requestのレビューまで一通り解説します。</div>
+        <div class="post-title">常連のSさんが教えてくれたこと</div>
+        <div class="post-excerpt">10年来の常連、Sさんが久しぶりにお見えになりました。「ここのカウンターが一番落ち着く」という一言に、この仕事をやっていてよかったと感じました。</div>
         <div class="post-arrow">続きを読む →</div>
       </a>
 
       <a class="post-card" href="post-3.html">
         <div class="post-meta">
           <span class="post-date">2026-04-28</span>
-          <span class="post-tag">Web</span>
+          <span class="post-tag">新メニュー</span>
         </div>
-        <div class="post-title">REST APIとは何か？初心者向け解説</div>
-        <div class="post-excerpt">システム間のデータのやり取りに使われるREST API。HTTPメソッド（GET・POST・PUT・DELETE）の意味から、実際のリクエスト・レスポンスの形まで、図を交えながら解説します。</div>
+        <div class="post-title">新メニュー開発、試作20回目の答え</div>
+        <div class="post-excerpt">春の新メニューとして赤ワインソースの牛ローストを加えることにしました。試作を重ねた末にたどり着いた、低温調理とソースの組み合わせをご紹介します。</div>
         <div class="post-arrow">続きを読む →</div>
       </a>
     </div>
   </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("a[href]").forEach(function(link) {
+      var href = link.getAttribute("href");
+      if (href && !href.startsWith("http") && !href.startsWith("#")) {
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          var target = this.getAttribute("href");
+          document.querySelectorAll(".container, .card, .dining-title, .subtitle").forEach(function(el) {
+            el.style.transition = "opacity 0.3s ease";
+            el.style.opacity = "0";
+          });
+          setTimeout(function() { window.location.href = target; }, 300);
+        });
+      }
+    });
+  });
+</script>
 </body>
 </html>
