@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitのブランチとPull Requestの使い方 — 松本健太郎</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: #070810;
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Hiragino Sans', sans-serif;
+      color: #e2e8f0;
+      padding: 40px 24px 80px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      transform: translateY(60px);
+    }
+
+    @keyframes slideInUp {
+      to { transform: translateY(0); }
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #818cf8;
+      text-decoration: none;
+      margin-bottom: 36px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: #a5b4fc; }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .post-date {
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    .post-tag {
+      font-size: 0.75rem;
+      color: #818cf8;
+      background: rgba(99, 102, 241, 0.12);
+      border-radius: 6px;
+      padding: 2px 8px;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.4;
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .content h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin: 36px 0 12px;
+    }
+
+    .content p {
+      font-size: 0.98rem;
+      color: #94a3b8;
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .content code {
+      background: #1a1d27;
+      border: 1px solid #2d3148;
+      border-radius: 6px;
+      padding: 2px 7px;
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.88em;
+      color: #a5b4fc;
+    }
+
+    .content pre {
+      background: #1a1d27;
+      border: 1px solid #2d3148;
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    .content pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.9rem;
+      color: #a5b4fc;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="blog.html">← 記事一覧に戻る</a>
+
+    <div class="post-meta">
+      <span class="post-date">2026-05-10</span>
+      <span class="post-tag">Git</span>
+    </div>
+
+    <h1>GitのブランチとPull Requestの使い方</h1>
+    <div class="divider"></div>
+
+    <div class="content">
+      <p>チーム開発で必須のGitブランチ運用。<code>main</code> ブランチを守りながら機能を追加するための基本的なフローをまとめました。</p>
+
+      <h2>ブランチを切る理由</h2>
+      <p>ブランチを使うと、本番コード（main）に影響を与えずに新機能の開発やバグ修正を進められます。作業が終わったらPull Request（PR）を出してレビューを受け、問題なければmainにマージします。</p>
+
+      <h2>基本的なフロー</h2>
+      <pre><code># 最新のmainを取得
+git checkout main
+git pull origin main
+
+# 作業用ブランチを作成・切り替え
+git checkout -b feature/add-login
+
+# 変更をコミット
+git add .
+git commit -m "ログイン機能を追加"
+
+# リモートにプッシュ
+git push origin feature/add-login</code></pre>
+
+      <h2>Pull Requestを出す</h2>
+      <p>プッシュ後にGitHubを開くと「Compare &amp; pull request」ボタンが表示されます。変更内容と背景を書いてPRを作成し、チームメンバーにレビューを依頼しましょう。</p>
+
+      <h2>マージ後のブランチ削除</h2>
+      <p>マージが完了したらブランチは不要になります。GitHub上の「Delete branch」ボタンで削除し、ローカルでも以下のコマンドでクリーンアップしましょう。</p>
+      <pre><code>git checkout main
+git pull origin main
+git branch -d feature/add-login</code></pre>
+    </div>
+  </div>
+</body>
+</html>

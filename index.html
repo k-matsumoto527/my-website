@@ -88,6 +88,29 @@
       margin-bottom: 32px;
     }
 
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      color: #818cf8;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: #a5b4fc;
+      border-bottom-color: #a5b4fc;
+    }
+
     .sns-links {
       display: flex;
       justify-content: center;
@@ -140,6 +163,9 @@
     <div class="title">会社員</div>
     <div class="divider"></div>
     <p class="bio">システムエンジニアしています</p>
+    <div class="nav-links">
+      <a class="nav-link" href="blog.html">Blog</a>
+    </div>
     <div class="sns-links">
       <a class="sns-link" href="https://x.com" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
