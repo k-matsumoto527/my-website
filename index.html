@@ -26,7 +26,7 @@
       position: fixed;
       top: 65%;
       left: 50%;
-      transform: translateX(-50%) translateY(60px);
+      transform: translateX(-50%);
       background: transparent;
       border: none;
       padding: 0 24px;
@@ -34,12 +34,13 @@
       width: 100%;
       text-align: center;
       box-shadow: none;
-      animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
     }
 
-    @keyframes slideInUp {
+    @keyframes fadeIn {
       to {
-        transform: translateX(-50%) translateY(0);
+        opacity: 1;
       }
     }
 
@@ -55,6 +56,8 @@
       letter-spacing: 0.12em;
       text-align: center;
       white-space: nowrap;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
     }
 
     .subtitle {
@@ -68,6 +71,8 @@
       letter-spacing: 0.08em;
       text-align: center;
       white-space: nowrap;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
     }
 
     .title {
