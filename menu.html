@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  &
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Menu — BAR田代</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: #070810;
+      background-image: url('image/backgraound/backgraund.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Shippori Mincho', serif;
+      color: #ffffff;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0 32px;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #ffffff;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      font-size: 0.9rem;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #2d3148;
+      padding-bottom: 10px;
+      margin: 40px 0 20px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-card {
+      background: rgba(26, 29, 39, 0.85);
+      border: 1px solid #2d3148;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .menu-card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: #1a1d27;
+    }
+
+    .menu-card-img.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+
+    .menu-card-body {
+      padding: 16px;
+    }
+
+    .menu-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .menu-card-desc {
+      font-size: 0.85rem;
+      color: #ffffff;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .menu-card-price {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 48px 0 24px;
+      color: #ffffff;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="back-link" href="index.html">← トップに戻る</a>
+      <div class="page-title">Menu</div>
+      <div class="page-subtitle">料理とお酒のメニュー</div>
+    </header>
+
+    <div class="section-title">料理</div>
+    <div class="card-grid">
+      <div class="menu-card">
+        <a href="menu-all.html">
+          <img class="menu-card-img" src="image/menu/menu.png" alt="メニュー全体">
+        </a>
+        <div class="menu-card-body">
+          <div class="menu-card-title">メニュー全体</div>
+          <div class="menu-card-desc">全メニューの一覧はこちらからご覧いただけます。</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img class="menu-card-img" src="image/menu/salada.png" alt="本日のサラダ">
+        <div class="menu-card-body">
+          <div class="menu-card-title">本日のサラダ</div>
+          <div class="menu-card-desc">旬の野菜を使ったフレッシュサラダ。ドレッシングは3種類からお選びいただけます。</div>
+          <div class="menu-card-price">¥600</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img class="menu-card-img" src="image/menu/zensai.png" alt="シェフのおまかせ前菜">
+        <div class="menu-card-body">
+          <div class="menu-card-title">シェフのおまかせ前菜</div>
+          <div class="menu-card-desc">毎日変わる旬の食材を使った前菜の盛り合わせです。</div>
+          <div class="menu-card-price">¥900</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img class="menu-card-img" src="image/menu/meat.png" alt="牛肉のロースト">
+        <div class="menu-card-body">
+          <div class="menu-card-title">牛肉のロースト</div>
+          <div class="menu-card-desc">じっくり低温調理した国産牛のローストビーフ。赤ワインソース添え。</div>
+          <div class="menu-card-price">¥1,800</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img class="menu-card-img" src="image/menu/fish.png" alt="本日の鮮魚のソテー">
+        <div class="menu-card-body">
+          <div class="menu-card-title">本日の鮮魚のソテー</div>
+          <div class="menu-card-desc">市場直送の新鮮な魚をシンプルにソテー。バターレモンソースで。</div>
+          <div class="menu-card-price">¥1,500</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">お酒</div>
+    <div class="card-grid">
+      <div class="menu-card">
+        <div class="menu-card-img placeholder">🍺</div>
+        <div class="menu-card-body">
+          <div class="menu-card-title">クラフトビール</div>
+          <div class="menu-card-desc">国内外から厳選したクラフトビールを常時10種類以上ご用意しています。</div>
+          <div class="menu-card-price">¥700〜</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img placeholder">🍷</div>
+        <div class="menu-card-body">
+          <div class="menu-card-title">グラスワイン</div>
+          <div class="menu-card-desc">フランス・イタリア・国産など、料理に合うワインをソムリエがご提案します。</div>
+          <div class="menu-card-price">¥800〜</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img placeholder">🥃</div>
+        <div class="menu-card-body">
+          <div class="menu-card-title">シングルモルトウイスキー</div>
+          <div class="menu-card-desc">スコッチ・アイリッシュ・ジャパニーズなど豊富な銘柄を取り揃えています。</div>
+          <div class="menu-card-price">¥900〜</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img placeholder">🍸</div>
+        <div class="menu-card-body">
+          <div class="menu-card-title">オリジナルカクテル</div>
+          <div class="menu-card-desc">バーテンダーが季節に合わせて考案したオリジナルカクテルです。</div>
+          <div class="menu-card-price">¥900〜</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>© BAR田代</footer>
+  </div>
+</body>
+</html>
