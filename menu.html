@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  &
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>Menu — Dining TASHIRO</title>
   <style>
@@ -24,9 +23,16 @@
       padding: 24px;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
     .container {
       max-width: 860px;
       margin: 0 auto;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
     }
 
     header {
