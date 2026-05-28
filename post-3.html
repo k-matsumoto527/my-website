@@ -2,13 +2,16 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>新メニュー開発、試作20回目の答え — Dining TASHIRO</title>
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #c9a96e;
+      --accent-dim: rgba(201,169,110,0.12);
+      --border: rgba(255,255,255,0.1);
     }
 
     body {
@@ -19,33 +22,76 @@
       background-position: center;
       background-attachment: fixed;
       font-family: 'Shippori Mincho', serif;
-      color: #ffffff;
-      padding: 40px 24px 80px;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(7,8,16,0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-logo {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .site-nav { display: flex; gap: 8px; }
+
+    .site-nav a {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      padding: 7px 20px;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .site-nav a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
     }
 
     .container {
       max-width: 680px;
       margin: 0 auto;
+      padding: 100px 24px 80px;
       opacity: 0;
-      animation: fadeIn 2.5s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
+      animation: fadeIn 1.5s ease 0.1s forwards;
     }
 
     .back-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.85rem;
-      color: #ffffff;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
       text-decoration: none;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
+      letter-spacing: 0.05em;
       transition: color 0.2s;
     }
 
-    .back-link:hover { color: #ffffff; }
+    .back-link:hover { color: var(--accent); }
 
     .post-meta {
       display: flex;
@@ -55,54 +101,65 @@
     }
 
     .post-date {
-      font-size: 0.85rem;
-      color: #ffffff;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
     }
 
     .post-tag {
-      font-size: 0.75rem;
-      color: #ffffff;
-      background: rgba(99, 102, 241, 0.12);
-      border-radius: 6px;
-      padding: 2px 8px;
+      font-size: 0.72rem;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border-radius: 4px;
+      padding: 2px 10px;
     }
 
     h1 {
       font-size: 1.9rem;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.4;
-      margin-bottom: 32px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 28px;
     }
 
     .divider {
       width: 40px;
-      height: 2px;
-      background: linear-gradient(90deg, #6366f1, #8b5cf6);
-      border-radius: 2px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.7;
       margin-bottom: 32px;
     }
 
     .content h2 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
-      color: #ffffff;
-      margin: 36px 0 12px;
+      color: #fff;
+      margin: 40px 0 14px;
+      padding-left: 12px;
+      border-left: 2px solid var(--accent);
     }
 
     .content p {
-      font-size: 0.98rem;
-      color: #ffffff;
-      line-height: 1.85;
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 2;
       margin-bottom: 16px;
     }
 
     @media (max-width: 480px) {
+      .site-header { padding: 16px 20px; }
       h1 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
+
+  <header class="site-header">
+    <a class="site-logo" href="index.html">Dining TASHIRO</a>
+    <nav class="site-nav">
+      <a href="menu.html">Menu</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+  </header>
+
   <div class="container">
     <a class="back-link" href="blog.html">← 記事一覧に戻る</a>
 
@@ -127,22 +184,20 @@
       <p>5月から正式にメニューに加わった牛肉のロースト。お客様の反応が楽しみで、毎晩オーダーが入るたびに緊張しながら焼いている。</p>
     </div>
   </div>
+
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll("a[href]").forEach(function(link) {
-      var href = link.getAttribute("href");
-      if (href && !href.startsWith("http") && !href.startsWith("#")) {
-        link.addEventListener("click", function(e) {
-          e.preventDefault();
-          var target = this.getAttribute("href");
-          document.querySelectorAll(".container, .card, .dining-title, .subtitle").forEach(function(el) {
-            el.style.transition = "opacity 0.3s ease";
-            el.style.opacity = "0";
-          });
-          setTimeout(function() { window.location.href = target; }, 300);
-        });
-      }
-    });
+  document.querySelectorAll("a[href]").forEach(function(link) {
+    var href = link.getAttribute("href");
+    if (href && !href.startsWith("http") && !href.startsWith("#")) {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        var target = this.getAttribute("href");
+        var el = document.querySelector(".container");
+        el.style.transition = "opacity 0.3s ease";
+        el.style.opacity = "0";
+        setTimeout(function() { window.location.href = target; }, 300);
+      });
+    }
   });
 </script>
 </body>
