@@ -234,12 +234,37 @@
       color: #fff;
     }
 
+    /* ===== FOOD GALLERY ===== */
+    .food-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+
+    .food-gallery-item {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .food-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     @media (max-width: 480px) {
       .site-header { padding: 16px 20px; }
       .hero-title-img { width: min(320px, 90vw); }
       .nav-links { flex-direction: column; align-items: center; }
       .nav-link { width: 200px; text-align: center; }
       .sns-links { flex-direction: column; align-items: center; }
+      .food-gallery { gap: 8px; }
     }
   </style>
 </head>
@@ -275,7 +300,17 @@
       </a>
     </div>
 
-    <div class="divider"></div>
+    <div class="food-gallery">
+      <div class="food-gallery-item">
+        <img src="image/menu/meat.png" alt="牛肉のロースト">
+      </div>
+      <div class="food-gallery-item">
+        <img src="image/menu/fish.png" alt="鮮魚のソテー">
+      </div>
+      <div class="food-gallery-item">
+        <img src="image/menu/beer.png" alt="クラフトビール">
+      </div>
+    </div>
 
     <div class="shop-info">
       <div class="shop-info-header">Information</div>
