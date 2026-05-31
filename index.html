@@ -301,6 +301,7 @@
   <header class="site-header">
     <a class="site-logo" href="index.html">Dining TASHIRO</a>
     <nav class="site-nav">
+      <a href="menu.html">Menu</a>
       <a href="blog.html">Blog</a>
     </nav>
   </header>
@@ -313,6 +314,7 @@
     <div class="divider"></div>
 
     <div class="nav-links">
+      <a class="nav-link" href="menu.html">Menu</a>
       <a class="nav-link" href="blog.html">Blog</a>
     </div>
 
@@ -327,13 +329,16 @@
       </a>
     </div>
 
-    <div style="width:100%;margin:8px 0;text-align:center;">
-      <button id="menu-btn" style="background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.5);color:#c9a96e;font-family:'Shippori Mincho',serif;font-size:0.9rem;letter-spacing:3px;padding:14px 40px;cursor:pointer;border-radius:4px;">メニューを見る</button>
-    </div>
-
-    <div id="menu-lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:1000;align-items:center;justify-content:center;padding:20px;">
-      <button id="menu-close" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.4rem;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
-      <img src="image/menu/menu.png" alt="メニュー" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;">
+    <div class="food-gallery">
+      <div class="food-gallery-item">
+        <img src="image/menu/meat.png" alt="牛肉のロースト">
+      </div>
+      <div class="food-gallery-item">
+        <img src="image/menu/fish.png" alt="鮮魚のソテー">
+      </div>
+      <div class="food-gallery-item">
+        <img src="image/menu/beer.png" alt="クラフトビール">
+      </div>
     </div>
 
     <div class="shop-info">
@@ -391,30 +396,6 @@
   </main>
 
 <script>
-  var lightbox = document.getElementById('menu-lightbox');
-
-  document.getElementById('menu-btn').addEventListener('click', function() {
-    lightbox.style.display = 'flex';
-    history.pushState({ lightbox: true }, '');
-  });
-
-  lightbox.addEventListener('click', function() {
-    lightbox.style.display = 'none';
-    history.back();
-  });
-
-  document.getElementById('menu-close').addEventListener('click', function(e) {
-    e.stopPropagation();
-    lightbox.style.display = 'none';
-    history.back();
-  });
-
-  window.addEventListener('popstate', function(e) {
-    if (lightbox.style.display === 'flex') {
-      lightbox.style.display = 'none';
-    }
-  });
-
   document.querySelectorAll("a[href]").forEach(function(link) {
     var href = link.getAttribute("href");
     if (href && !href.startsWith("http") && !href.startsWith("#")) {
