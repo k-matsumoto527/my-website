@@ -18,12 +18,18 @@
     body {
       min-height: 100vh;
       background-color: #070810;
+      font-family: 'Shippori Mincho', serif;
+      color: #fff;
+    }
+
+    .bg-fixed {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-image: url('image/backgraound/backgraund.png');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
-      font-family: 'Shippori Mincho', serif;
-      color: #fff;
+      z-index: -1;
     }
 
     @keyframes fadeIn {
@@ -234,6 +240,28 @@
       color: #fff;
     }
 
+    .map-section {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .map-section-header {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .map-section iframe {
+      width: 100%;
+      height: 220px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: block;
+      filter: grayscale(30%) brightness(0.85);
+    }
+
     /* ===== FOOD GALLERY ===== */
     .food-gallery {
       display: flex;
@@ -278,6 +306,7 @@
     </nav>
   </header>
 
+  <div class="bg-fixed"></div>
   <main class="hero">
     <img class="hero-title-img" src="image/title/title.png" alt="Dining TASHIRO">
     <p class="hero-sub">巨匠田代監修　おいしい料理とお酒のお店</p>
@@ -352,6 +381,17 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="map-section">
+      <div class="map-section-header">Access</div>
+      <iframe
+        src="https://maps.google.com/maps?q=岐阜県&output=embed"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        title="店舗マップ">
+      </iframe>
     </div>
   </main>
 
